@@ -10,8 +10,9 @@ class CodeController extends Controller
 {
 	public function send()
 	{
-		app(AliyunService::class)->sms();
+		// app(AliyunService::class)->sms();
+		// return 'ok';
+		app(CodeService::class)->send(env('MOBILE'));
 		return 'ok';
-		// return app(CodeService::class)->send(env('MOBILE'));
 	}
 }
