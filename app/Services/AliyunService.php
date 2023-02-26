@@ -44,7 +44,7 @@ class AliyunService
 			"signName" => "阿里云短信测试",
 			"templateCode" => "SMS_154950909",
 			"phoneNumbers" => env('MOBILE'),
-			"templateParam" => "{\"code\":\"1234\"}"
+			"templateParam" => "{\"code\":\"8888\"}"
 		]);
 		$runtime = new RuntimeOptions([]);
 		try {
