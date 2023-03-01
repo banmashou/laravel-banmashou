@@ -14,5 +14,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/abc', function () {
-    return config('bm.aliyun.aliyun_key');
+	// return config('bm.aliyun.aliyun_key');
+	return '123';
 });

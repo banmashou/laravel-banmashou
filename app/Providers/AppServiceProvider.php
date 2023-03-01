@@ -17,6 +17,11 @@ class AppServiceProvider extends ServiceProvider
 	{
 		$this->app->instance(CodeService::class, new CodeService());
 		$this->app->instance(AliyunService::class, new AliyunService());
+
+		if ($this->app->environment('local')) {
+			$this->app->register(\Laravel\Telescope\TelescopeServiceProvider::class);
+			$this->app->register(TelescopeServiceProvider::class);
+		}
 	}
 
 	/**
