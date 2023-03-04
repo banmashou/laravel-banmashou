@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Rules\CodeRule;
 use App\Rules\PhoneRule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -31,5 +32,20 @@ class AuthController extends Controller
 		// }
 
 		// return $request->input();
+	}
+
+	public function register(Request $request, User $user)
+	{
+		Validator::make($request->input(), [
+			'mobile' => ['required', Rule::unique('users')],
+			'password' => ['required', 'confirmed'],
+			'code' => ['required', new CodeRule()]
+			// 'password_confirmation' => ['required']
+		])->validate();
+
+		$user->fill($request->input());
+		$user->password = Hash::make($request->password);
+		$user->save();
+		return $this->success('登录成功', ['token' => $user->createToken('auth')->plainTextToken]);
 	}
 }

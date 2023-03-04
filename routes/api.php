@@ -15,4 +15,5 @@ Route::controller(CodeController::class)->prefix('code')->group(function () {
 
 Route::controller(AuthController::class)->prefix('auth')->group(function () {
 	Route::post('login', 'login');
+	Route::post('register', 'register');
 });

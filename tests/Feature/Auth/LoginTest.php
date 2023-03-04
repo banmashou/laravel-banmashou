@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Auth;
 
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
@@ -32,8 +33,9 @@ class LoginTest extends TestCase
 	 */
 	public function ThePasswordInputError()
 	{
+		$user = $this->create(User::class, null, ['mobile' => 19999999999]);
 		$response = $this->postJson('api/auth/login', [
-			'mobile' => env('MOBILE'),
+			'mobile' => $user->mobile,
 			'password' => 'admin88811'
 		]);
 
