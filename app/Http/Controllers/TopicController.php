@@ -5,9 +5,16 @@ namespace App\Http\Controllers;
 use App\Models\Topic;
 use App\Http\Requests\StoreTopicRequest;
 use App\Http\Requests\UpdateTopicRequest;
+use App\Http\Resources\TopicResource;
 
 class TopicController extends Controller
 {
+
+	public function __construct()
+	{
+		// header jwt token
+		$this->middleware('auth:sanctum')->except(['index', 'show']);
+	}
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -15,7 +22,7 @@ class TopicController extends Controller
 	 */
 	public function index()
 	{
-		return Topic::paginate(10);
+		return TopicResource::collection(Topic::with('user')->paginate(10));
 		// return [
 		// 	'data' => [
 		// 		''
@@ -52,7 +59,7 @@ class TopicController extends Controller
 	 */
 	public function show(Topic $topic)
 	{
-		return $topic;
+		return new TopicResource($topic->load('user'));
 	}
 
 	/**
