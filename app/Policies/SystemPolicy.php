@@ -2,13 +2,11 @@
 
 namespace App\Policies;
 
-use App\Models\Topic;
+use App\Models\System;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-// include __DIR__ . "/../helper.php";
-
-class TopicPolicy
+class SystemPolicy
 {
 	use HandlesAuthorization;
 
@@ -27,10 +25,10 @@ class TopicPolicy
 	 * Determine whether the user can view the model.
 	 *
 	 * @param  \App\Models\User  $user
-	 * @param  \App\Models\Topic  $topic
+	 * @param  \App\Models\System  $system
 	 * @return \Illuminate\Auth\Access\Response|bool
 	 */
-	public function view(User $user, Topic $topic)
+	public function view(User $user, System $system)
 	{
 		//
 	}
@@ -43,17 +41,17 @@ class TopicPolicy
 	 */
 	public function create(User $user)
 	{
-		//
+		return isSuperadmin();
 	}
 
 	/**
 	 * Determine whether the user can update the model.
 	 *
 	 * @param  \App\Models\User  $user
-	 * @param  \App\Models\Topic  $topic
+	 * @param  \App\Models\System  $system
 	 * @return \Illuminate\Auth\Access\Response|bool
 	 */
-	public function update(User $user, Topic $topic)
+	public function update(User $user, System $system)
 	{
 		//
 	}
@@ -62,23 +60,22 @@ class TopicPolicy
 	 * Determine whether the user can delete the model.
 	 *
 	 * @param  \App\Models\User  $user
-	 * @param  \App\Models\Topic  $topic
+	 * @param  \App\Models\System  $system
 	 * @return \Illuminate\Auth\Access\Response|bool
 	 */
-	public function delete(User $user, Topic $topic)
+	public function delete(User $user, System $system)
 	{
-		// 超级用户和指定用户才能删除
-		return isSuperadmin() || $topic->user_id == $user->id;
+		//
 	}
 
 	/**
 	 * Determine whether the user can restore the model.
 	 *
 	 * @param  \App\Models\User  $user
-	 * @param  \App\Models\Topic  $topic
+	 * @param  \App\Models\System  $system
 	 * @return \Illuminate\Auth\Access\Response|bool
 	 */
-	public function restore(User $user, Topic $topic)
+	public function restore(User $user, System $system)
 	{
 		//
 	}
@@ -87,10 +84,10 @@ class TopicPolicy
 	 * Determine whether the user can permanently delete the model.
 	 *
 	 * @param  \App\Models\User  $user
-	 * @param  \App\Models\Topic  $topic
+	 * @param  \App\Models\System  $system
 	 * @return \Illuminate\Auth\Access\Response|bool
 	 */
-	public function forceDelete(User $user, Topic $topic)
+	public function forceDelete(User $user, System $system)
 	{
 		//
 	}
