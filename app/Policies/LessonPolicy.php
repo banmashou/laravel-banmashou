@@ -2,18 +2,18 @@
 
 namespace App\Policies;
 
-use App\Models\System;
+use App\Models\Lesson;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class SystemPolicy
+class LessonPolicy
 {
 	use HandlesAuthorization;
-	public function before(User $user, $ability)
+
+	public function before()
 	{
 		return isSuperadmin();
 	}
-
 	/**
 	 * Determine whether the user can view any models.
 	 *
@@ -29,10 +29,10 @@ class SystemPolicy
 	 * Determine whether the user can view the model.
 	 *
 	 * @param  \App\Models\User  $user
-	 * @param  \App\Models\System  $system
+	 * @param  \App\Models\Lesson  $lesson
 	 * @return \Illuminate\Auth\Access\Response|bool
 	 */
-	public function view(User $user, System $system)
+	public function view(User $user, Lesson $lesson)
 	{
 		//
 	}
@@ -45,41 +45,41 @@ class SystemPolicy
 	 */
 	public function create(User $user)
 	{
-		return isSuperadmin();
+		//
 	}
 
 	/**
 	 * Determine whether the user can update the model.
 	 *
 	 * @param  \App\Models\User  $user
-	 * @param  \App\Models\System  $system
+	 * @param  \App\Models\Lesson  $lesson
 	 * @return \Illuminate\Auth\Access\Response|bool
 	 */
-	public function update(User $user, System $system)
+	public function update(User $user, Lesson $lesson)
 	{
-		return isSuperadmin();
+		//
 	}
 
 	/**
 	 * Determine whether the user can delete the model.
 	 *
 	 * @param  \App\Models\User  $user
-	 * @param  \App\Models\System  $system
+	 * @param  \App\Models\Lesson  $lesson
 	 * @return \Illuminate\Auth\Access\Response|bool
 	 */
-	public function delete(User $user, System $system)
+	public function delete(User $user, Lesson $lesson)
 	{
-		return isSuperadmin();
+		//
 	}
 
 	/**
 	 * Determine whether the user can restore the model.
 	 *
 	 * @param  \App\Models\User  $user
-	 * @param  \App\Models\System  $system
+	 * @param  \App\Models\Lesson  $lesson
 	 * @return \Illuminate\Auth\Access\Response|bool
 	 */
-	public function restore(User $user, System $system)
+	public function restore(User $user, Lesson $lesson)
 	{
 		//
 	}
@@ -88,10 +88,10 @@ class SystemPolicy
 	 * Determine whether the user can permanently delete the model.
 	 *
 	 * @param  \App\Models\User  $user
-	 * @param  \App\Models\System  $system
+	 * @param  \App\Models\Lesson  $lesson
 	 * @return \Illuminate\Auth\Access\Response|bool
 	 */
-	public function forceDelete(User $user, System $system)
+	public function forceDelete(User $user, Lesson $lesson)
 	{
 		//
 	}
