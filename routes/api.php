@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CodeController;
 use App\Http\Controllers\LessonController;
+use App\Http\Controllers\SignController;
 use App\Http\Controllers\SystemController;
 use App\Http\Controllers\TopicController;
 use App\Http\Controllers\VideoController;
@@ -37,3 +38,6 @@ Route::apiResource('lesson', LessonController::class);
 
 // 视频
 Route::apiResource('video', VideoController::class);
+
+// 签到
+Route::apiResource('sign', SignController::class);
