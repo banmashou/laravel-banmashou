@@ -22,7 +22,7 @@ class SignController extends Controller
 	 */
 	public function index(Request $request)
 	{
-		$signs = Sign::whereDate('created_at', now())->paginate($request->quer('row', 10));
+		$signs = Sign::whereDate('created_at', now())->paginate($request->query('row', 10));
 		return SignResource::collection($signs);
 	}
 

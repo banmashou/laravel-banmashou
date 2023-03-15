@@ -13,11 +13,10 @@ return new class extends Migration
 	 */
 	public function up()
 	{
-		Schema::create('signs', function (Blueprint $table) {
+		Schema::create('durations', function (Blueprint $table) {
 			$table->id();
 			$table->foreignId('user_id')->constrained()->onDelete('cascade');
-			$table->string('content')->comment('签到内容');
-			$table->string('mood')->comment('心情图标');
+			$table->dateTime('end_time')->comment('订阅到期时间');
 			$table->timestamps();
 		});
 	}
@@ -29,6 +28,6 @@ return new class extends Migration
 	 */
 	public function down()
 	{
-		Schema::dropIfExists('signs');
+		Schema::dropIfExists('durations');
 	}
 };

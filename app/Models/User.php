@@ -49,4 +49,14 @@ class User extends Authenticatable
 	{
 		return $this->hasMany(Sign::class);
 	}
+
+	public function signCount()
+	{
+		return $this->hasOne(SignCount::class);
+	}
+
+	public function duration()
+	{
+		return $this->hasOne(Duration::class);
+	}
 }

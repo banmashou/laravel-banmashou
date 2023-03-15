@@ -13,11 +13,11 @@ return new class extends Migration
 	 */
 	public function up()
 	{
-		Schema::create('signs', function (Blueprint $table) {
+		Schema::create('sign_counts', function (Blueprint $table) {
 			$table->id();
 			$table->foreignId('user_id')->constrained()->onDelete('cascade');
-			$table->string('content')->comment('签到内容');
-			$table->string('mood')->comment('心情图标');
+			$table->unsignedSmallInteger('year')->default(0)->comment('年签到统计');
+			$table->unsignedSmallInteger('month')->default(0)->comment('月签到统计');
 			$table->timestamps();
 		});
 	}
@@ -29,6 +29,6 @@ return new class extends Migration
 	 */
 	public function down()
 	{
-		Schema::dropIfExists('signs');
+		Schema::dropIfExists('sign_counts');
 	}
 };

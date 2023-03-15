@@ -42,6 +42,7 @@ class VideoController extends Controller
 	 */
 	public function show(Video $video)
 	{
+		$this->authorize('view', $video);
 		return new VideoResource($video->load('lesson.system'));
 	}
 
