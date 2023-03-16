@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CodeController;
+use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\LessonController;
 use App\Http\Controllers\SignController;
 use App\Http\Controllers\SystemController;
@@ -41,3 +42,6 @@ Route::apiResource('video', VideoController::class);
 
 // 签到
 Route::apiResource('sign', SignController::class);
+
+// 收藏
+Route::post('favorite/{type}/{id}', [FavoriteController::class, 'toggle']);

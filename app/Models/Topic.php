@@ -14,4 +14,9 @@ class Topic extends Model
 	{
 		return $this->belongsTo(User::class, 'user_id');
 	}
+
+	public function favorites()
+	{
+		return $this->morphToMany(User::class, 'favorite')->withTimestamps();
+	}
 }

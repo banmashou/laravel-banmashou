@@ -9,4 +9,11 @@ if (!function_exists('isSuperadmin')) {
 	{
 		return Auth::check() && Auth::id() == 1;
 	}
+
+	if (!function_exists('modelClass')) {
+		function modelClass(string $name)
+		{
+			return 'App\Models\\' . ucfirst($name);
+		}
+	}
 }

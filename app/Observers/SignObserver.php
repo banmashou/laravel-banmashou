@@ -18,11 +18,12 @@ class SignObserver
 	public function created(Sign $sign)
 	{
 		$user = Auth::user();
-		SignCount::updateOrCreate(['user_id' => $user->id], [
-			'year' => $user->signs()->whereYear('created_at', now())->count(),
-			'month' => $user->signs()->whereYear('created_at', now())->whereMonth('created_at', now())->count(),
-			'user_id' => $user->id
-		]);
+		if ($user)
+			SignCount::updateOrCreate(['user_id' => $user->id], [
+				'year' => $user->signs()->whereYear('created_at', now())->count(),
+				'month' => $user->signs()->whereYear('created_at', now())->whereMonth('created_at', now())->count(),
+				'user_id' => $user->id
+			]);
 	}
 
 	/**
