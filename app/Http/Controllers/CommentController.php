@@ -29,7 +29,13 @@ class CommentController extends Controller
 	public function store(StoreCommentRequest $request, String $type, int $id)
 	{
 		$model = model($type, $id);
-		$comment = $model->comments()->create(['user_id' => Auth::id()] + $request->input());
+		$data = ['user_id' => Auth::id()] + $request->input();
+
+		if ($request->comment_id) {
+			$data['reply_user_id'] = Comment::find($request->comment_id)->user_id;
+		}
+
+		$comment = $model->comments()->create($data);
 		// return $model;
 		// $comment->fill(['user_id' => Auth::id()] + $request->input())->save();
 		return new CommentResource($comment->fresh());
