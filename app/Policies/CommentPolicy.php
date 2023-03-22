@@ -10,6 +10,11 @@ class CommentPolicy
 {
 	use HandlesAuthorization;
 
+	public function before()
+	{
+		if (isSuperadmin()) return true;
+	}
+
 	/**
 	 * Determine whether the user can view any models.
 	 *

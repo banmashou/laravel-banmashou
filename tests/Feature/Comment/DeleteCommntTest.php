@@ -35,6 +35,9 @@ class DeleteCommntTest extends TestCase
 		$response->assertStatus(200);
 	}
 
+	/**
+	 * 获取新评论
+	 */
 	protected function comment()
 	{
 		$user = $this->create(User::class);
