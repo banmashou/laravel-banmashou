@@ -49,3 +49,4 @@ Route::post('favorite/{type}/{id}', [FavoriteController::class, 'toggle']);
 
 // 评论
 Route::post('comment/{type}/{id}', [CommentController::class, 'store']);
+Route::apiResource('comment', CommentController::class);
