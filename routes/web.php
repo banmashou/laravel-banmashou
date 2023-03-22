@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/abc', function () {
+Route::get('/', function () {
 	// return config('bm.aliyun.aliyun_key');
-	return '123';
+	return 'home';
 });
