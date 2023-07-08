@@ -14,17 +14,14 @@ export default ({ command, mode }: ConfigEnv) => {
 			alias,
 		},
 		server: {
-			host: env.VITE_HOST, // ip地址
-			port: env.VITE_PORT, //端口号
-			open: false,
+			// host: env.VITE_HOST, // ip地址
+			// port: env.VITE_PORT, //端口号
+			// open: false,
+			host: true,
 			proxy: {
 				'/api': {
-					// 将/api访问转换为target
-					target: env.VITE_MOCK_ENABLE ? '/api' : env.VITE_API_URL,
-					// 跨域请求携带cookie
+					target: env.VITE_API_URL,
 					changeOrigin: true,
-					// url 重写删除`/api`
-					rewrite: (path: string) => path.replace(/^\/api/, ''),
 				},
 			},
 		},

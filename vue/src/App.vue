@@ -1,6 +1,12 @@
 <script setup lang="ts">
 // import { onMounted } from 'vue'
 
+import { http } from './plugins/axios';
+
+http.request({url: 'abc'}).then(r => {
+	console.log(r)
+})
+
 // import userApi from './apis/userApi'
 
 // onMounted(async () => {

@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Rules\CodeRule;
 use App\Rules\PhoneRule;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
@@ -21,6 +22,7 @@ class AuthController extends Controller
 
 		$user = User::where('mobile', $request->mobile)->first();
 		if ($user && Hash::check($request->password, $user->password)) {
+			Auth::guard('web')->login($user);
 			return $this->success('登录成功', ['token' => $user->createToken('auth')->plainTextToken, 'user' => $user]);
 		}
 

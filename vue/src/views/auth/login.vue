@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import utils from '@/utils'
 import v from '@/plugins/validate'
+const { login } = useAuth()
 
 const { yup, useForm, useField, useFields } = v
 
 const schema = {
-  account: yup
+  mobile: yup
     .string()
     .required()
     .matches(/^\d{11}|.+@.+$/, '请输入邮箱或手机号')
@@ -15,7 +16,7 @@ const schema = {
 
 const { handleSubmit, errors, values } = useForm({
   initialValues: {
-    account: '237313142@qq.com',
+    mobile: '15307372227',
     password: 'admin888',
   },
   validationSchema: schema,
@@ -25,7 +26,9 @@ useFields(Object.keys(schema))
 // useField<string>('password')
 
 const onSubmit = handleSubmit(async (values: any) => {
-  utils.user.login(values)
+  console.log('values', values)
+  login(values)
+  // utils.user.login(values)
 })
 </script>
 <script lang="ts">
@@ -33,14 +36,14 @@ export default { route: { name: 'login', meta: { guest: true } } }
 </script>
 
 <template>
-  <form @submit="onSubmit">
+  <form @submit="onSubmit" class="bg-gray-700">
     <div class="w-[720px] bg-white md:grid grid-cols-2 rounded-md shadow-md overflow-hidden">
-      <div class="p-6 flex flex-col justify-center">
+      <div class="p-5 flex flex-col justify-center">
         <div>
           <h2 class="text-center text-gray-700 text-lg mt-3">会员登录</h2>
           <div class="mt-8">
-            <BmInput v-model="values.account" />
-            <BmError :error="errors.account"></BmError>
+            <BmInput v-model="values.mobile" />
+            <BmError :error="errors.mobile"></BmError>
             <BmInput type="password" v-model="values.password" class="mt-3" />
             <BmError :error="errors.password"></BmError>
             <!-- <Field name="account" autocomplete value="admin@banmashou.com" label="账号" placeholder="请输入邮箱或手机号" class="bm-input" />
