@@ -1,5 +1,8 @@
+/**
+ * @description: tailwindcss
+ * @author: 斑马兽
+ * @export
+ */
 import './tailwindcss.css'
-import { App } from 'vue'
 
-const setup = (app: App) => {}
-export { setup }
+export function setupTailwindcss() { }

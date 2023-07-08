@@ -1,13 +1,16 @@
-import directive from '@/directives'
-import plugin from '@/plugins'
-import '@/assets/global.scss'
 import { createApp } from 'vue'
 import App from './App.vue'
+import router, { setupRouter } from '@/router'
+import { setupPlugins } from './plugins'
+import '@/styles/global.scss'
+import 'animate.css'
 
-function bootstrap() {
+async function bootstrap() {
   const app = createApp(App)
-  plugin(app)
-  directive(app)
+  setupPlugins(app)
+  setupRouter(app)
+  // 先加载路由，再挂载app
+  await router.isReady()
   app.mount('#app')
 }
 

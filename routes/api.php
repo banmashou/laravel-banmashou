@@ -17,8 +17,8 @@ use Illuminate\Support\Facades\Route;
 // 	return $request->user();
 // });
 
-Route::controller(CodeController::class)->prefix('code')->group(function () {
-	Route::post('send', 'send');
+Route::get('/abc',function(){
+	return 'abc...';
 });
 
 Route::controller(AuthController::class)->prefix('auth')->group(function () {

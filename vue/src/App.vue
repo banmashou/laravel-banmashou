@@ -1,43 +1,22 @@
 <script setup lang="ts">
-import zhCn from 'element-plus/lib/locale/lang/zh-cn'
+// import { onMounted } from 'vue'
+
+// import userApi from './apis/userApi'
+
+// onMounted(async () => {
+//   const res = await fetch(`http://localhost:5173/api/get`).then((r) => r.json())
+//   console.log(res)
+// })
+// onMounted(async () => {
+//   const response = await userApi.login()
+//   console.log(response)
+// })
 </script>
 
 <template>
-  <main>
-    <ElConfigProvider :locale="zhCn">
-      <RouterView v-slot="{ Component }">
-        <template v-if="Component">
-          <Suspense>
-            <component :is="Component"></component>
-          </Suspense>
-        </template>
-      </RouterView>
-    </ElConfigProvider>
-
-    <el-backtop :right="20" :bottom="100">
-      <div
-        style="
-          height: 100%;
-          width: 100%;
-          background-color: none !important;
-          box-shadow: none !important;
-          text-align: center;
-          line-height: 40px;
-          color: #1989fa;
-        ">
-        <icon-up-square theme="filled" size="40" fill="#e66767" />
-      </div>
-    </el-backtop>
-  </main>
+  <Suspense>
+    <router-view />
+  </Suspense>
 </template>
 
-<style lang="scss">
-.el-backtop {
-  box-shadow: none !important;
-  --el-backtop-bg-color: none !important;
-  &:hover {
-    box-shadow: none !important;
-    --el-backtop-bg-color: none !important;
-  }
-}
-</style>
+<style></style>

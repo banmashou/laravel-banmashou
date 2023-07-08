@@ -1,17 +1,29 @@
+/**
+ * @deprecated 插件注册
+ * @author 斑马兽
+ * @export
+ * @param {App} app
+ */
 import { App } from 'vue'
-import { setup as animate } from './animate'
-import { setup as axios } from './axios'
-import { setup as dayjs } from './dayjs'
-import { setup as elementui } from './elementui'
-import { setup as iconpark } from './iconpark'
-import { setup as markdown } from './markdown'
-import { setup as tailwindcss } from './tailwindcss'
-import { setup as validate } from './validate'
-import { setup as router } from './router'
-import { setup as pinia } from './pinia'
+import { setupTailwindcss } from './tailwindcss'
+import _ from 'lodash'
+import setupElementPlus from './elementui'
+import setupPinia from './pinia'
+import setupIconPark from './iconpark'
 
-const modules = [animate, axios, dayjs, elementui, iconpark, markdown, tailwindcss, validate, router, pinia]
-
-export default function register(app: App) {
-  modules.map((setup) => setup(app))
+export function setupPlugins(app: App) {
+  // autoRegisterComponent(app)
+  setupTailwindcss()
+  setupElementPlus()
+  setupPinia(app)
+  setupIconPark(app)
 }
+
+// 自动注册全局组件
+// function autoRegisterComponent(app: App) {
+//   const compoents: Record<string, any> = import.meta.glob('../components/form/*.vue', { eager: true })
+//   Object.keys(compoents).forEach((key) => {
+//     const name = key.split('/').pop()?.split('.').shift() as string
+//     app.component(_.camelCase(name), compoents[key].default)
+//   })
+// }
